@@ -1,0 +1,11 @@
+@import "tailwindcss";
+*{
+    font-family:'Roboto Condensed';
+
+
+}
+body{
+  background-color: rgb(3, 43, 80);
+}
+
+/* background-image: url("C:\Users\BIENHEUREUX\Desktop\PROJETBIEN\QUICKRESTO\FRONTEND\quickresto\src\assets\bg.jpg");*/
