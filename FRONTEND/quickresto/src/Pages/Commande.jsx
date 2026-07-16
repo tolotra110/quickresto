@@ -17,11 +17,10 @@ export default function Commande() {
   const [totauxTable, setTotauxTable] = useState([]);
   const [filterTable, setFilterTable] = useState("");
 
-  // 🔥 PAGINATION
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
 
-  // 🔄 LOAD DATA
+  
   useEffect(() => {
     loadCommandes();
     loadTotaux();
@@ -39,7 +38,7 @@ export default function Commande() {
       .catch((err) => console.error(err));
   };
 
-  // ❌ DELETE
+
   const handleDelete = (idCommande) => {
     deleteCommande(idCommande)
       .then(() => {
@@ -50,7 +49,6 @@ export default function Commande() {
       .catch((err) => console.error(err));
   };
 
-  // ➕ ADD
   const handleAddCommande = (newCommande) => {
     const payload = {
       numTab: newCommande.table,
@@ -69,7 +67,7 @@ export default function Commande() {
       .catch((err) => console.error(err));
   };
 
-  // 🔍 FILTRE PAR TABLE
+  
   const filteredCommandes = useMemo(() => {
     if (!filterTable) return commandes;
 
@@ -78,7 +76,7 @@ export default function Commande() {
     );
   }, [commandes, filterTable]);
 
-  // 🔥 TOTAL MAP
+
   const totalMap = useMemo(() => {
     const map = {};
 
@@ -99,7 +97,7 @@ export default function Commande() {
     return totalMap[numTab] || 0;
   };
 
-  // 🧠 CARDS DATA
+
   const orderCards = useMemo(() => {
     return filteredCommandes.map((cmd) => ({
       id: cmd.idCommande,
@@ -118,7 +116,6 @@ export default function Commande() {
     }));
   }, [filteredCommandes, totalMap]);
 
-  // 📄 PAGINATION LOGIC
   const totalPages = Math.ceil(orderCards.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
