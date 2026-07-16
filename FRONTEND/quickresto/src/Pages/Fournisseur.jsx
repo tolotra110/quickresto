@@ -13,7 +13,7 @@ import {
 export default function Fournisseur() {
   const [fournisseurs, setFournisseurs] = useState([]);
 
-  // 🔄 LOAD DATA
+  
   useEffect(() => {
     loadFournisseurs();
   }, []);
@@ -26,7 +26,7 @@ export default function Fournisseur() {
       .catch((err) => console.error("GET ERROR:", err));
   };
 
-  // ➕ ADD FOURNISSEUR
+
   const handleAdd = (newFournisseur) => {
     const payload = {
       nomFournisseur: newFournisseur.nomFournisseur,
@@ -44,11 +44,11 @@ export default function Fournisseur() {
       .catch((err) => console.error("CREATE ERROR:", err));
   };
 
-  // ❌ DELETE FOURNISSEUR
+  
   const handleDelete = (id) => {
     deleteFournisseur(id)
       .then(() => {
-        loadFournisseurs(); // refresh après suppression
+        loadFournisseurs(); 
       })
       .catch((err) => console.error("DELETE ERROR:", err));
   };
